@@ -129,7 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 
 
-CORS_ALLOWED_ORIGINS = ["https://todolist-production-a7b6.up.railway.app/",]
+CORS_ALLOWED_ORIGINS = ["*",]
 
 
-CSRF_TRUSTED_ORIGINS = ["https://todolist-production-a7b6.up.railway.app/"]
+CSRF_TRUSTED_ORIGINS = ["*"]
