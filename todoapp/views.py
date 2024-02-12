@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import todo
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import DisallowedHost
+from django.http import HttpResponseForbidden
 # Create your views here.
 
 @login_required
@@ -77,3 +79,29 @@ def Update(request, name):
     get_todo.status = True
     get_todo.save()
     return redirect('home-page')
+
+
+
+def my_view(request):
+    def _origin_verified(request):
+        if "HTTP_ORIGIN" in request.META:
+            request_origin = request.META["HTTP_ORIGIN"]
+            try:
+                good_host = request.get_host()
+            except DisallowedHost:
+                pass
+            else:
+                good_origin = "%s://%s" % (
+                    "https" if request.is_secure() else "http",
+                    good_host,
+                )
+                if request_origin == good_origin:
+                    return True
+        return False
+
+    if _origin_verified(request):
+        # Origin is verified, proceed with your logic
+        return HttpResponse("Origin verified")
+    else:
+        # Origin is not verified, handle the error
+        return HttpResponseForbidden("Origin verification failed")
