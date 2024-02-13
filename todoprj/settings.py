@@ -136,15 +136,16 @@ CORS_ALLOWED_ORIGINS = ["https://todolist-production-a7b6.up.railway.app/login/"
 
 
 
-CORS_ORIGIN_WHITELIST = (
+CORS_ORIGIN_WHITELIST = [
    "https://todolist-production-a7b6.up.railway.app/login/",
     "https://todolist-production-a7b6.up.railway.app/register/",
     "todolist-production-a7b6.up.railway.app"
-)
+]
 
-CSRF_TRUSTED_ORIGINS = ["https://todolist-production-a7b6.up.railway.app/register/",
-                       "https://todolist-production-a7b6.up.railway.app/login/",
-                       "todolist-production-a7b6.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://todolist-production-a7b6.up.railway.app",
+    "https://todolist-production-a7b6.up.railway.app/register/",
+    "https://todolist-production-a7b6.up.railway.app/login/",]
 
 
 CORS_ALLOW_CREDENTIALS = True
