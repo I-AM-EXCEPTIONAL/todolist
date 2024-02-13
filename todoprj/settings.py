@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    '**corsheaders.middleware.CorsMiddleware**',
     'todoapp.middleware.OriginVerificationMiddleware'
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -135,6 +135,23 @@ CORS_ALLOWED_ORIGINS = ["https://todolist-production-a7b6.up.railway.app/login/"
                        "todolist-production-a7b6.up.railway.app"]
 
 
+
+
+CORS_ORIGIN_WHITELIST = (
+   "https://todolist-production-a7b6.up.railway.app/login/",
+    "https://todolist-production-a7b6.up.railway.app/register/",
+    "todolist-production-a7b6.up.railway.app"
+)
+
 CSRF_TRUSTED_ORIGINS = ["https://todolist-production-a7b6.up.railway.app/register/",
                        "https://todolist-production-a7b6.up.railway.app/login/",
                        "todolist-production-a7b6.up.railway.app"]
+
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_REPLACE_HTTPS_REFERER = True
